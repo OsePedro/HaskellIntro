@@ -4,7 +4,7 @@
 
 This repository contains a basic implementation of the messaging system that I used as a running example in my ["Introduction to Functional Programming" presentation](https://docs.google.com/presentation/d/1bIBQewtYiaXQy0kvyWsJ3YTIPQMGXIq1hXNsOXZcURI).
 
-## Loading the Code
+## Getting Started
 
 To play around with the messaging system, do the following:
 
@@ -16,6 +16,10 @@ To play around with the messaging system, do the following:
     1. Option 2: **Clone the Git repository:**
         1. If you don't already have Git, use [these instructions](https://git-scm.com/downloads) to get it.
         1. Launch a terminal and run `git clone git@github.com:OsePedro/HaskellIntro.git` to clone this repository.
+1. **Text editor:** You'll need a text editor to edit the code. 
+If you want syntax highlighting, try:
+    - [Visual Studio Code](https://code.visualstudio.com/) with the [Haskell](https://marketplace.visualstudio.com/items?itemName=haskell.haskell) extension;
+    - or [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
 1. Launch a terminal and navigate to the `HaskellIntro` directory that you downloaded/cloned.
 1. Run `ghci` &mdash; this is a REPL (an interactive environment), in which you can execute arbitrary Haskell expressions.
 1. Type `:l Demo.hs` to load the code.
@@ -27,15 +31,14 @@ To play around with the messaging system, do the following:
 Type `ose`, `pedro`, etc. to see the `Name`s of these `LoggedInUser`s.
 1. The `password` function displays the `Password` of a `LoggedInUser`. 
 Type `password alerter`, `password ose`, etc. to see their `Password`s.
-1. Open [Demo.hs](Demo.hs) in an editor. If you want syntax highlighting, try:
-    - [Visual Studio Code](https://code.visualstudio.com/) with the [Haskell](https://marketplace.visualstudio.com/items?itemName=haskell.haskell) extension;
-    - or [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
-1. Add code that registers two new `User`s to `msgSys1`:
-    - (the `initialise` function at the bottom of the file demonstrates how to do this).
+1. Open [Demo.hs](Demo.hs) in an editor.
+1. Add code that registers two new `User`s to `msgSys1`.
+    - The `initialise` function at the bottom of the file demonstrates how to do this.
 1. Reload the file in `ghci` (i.e. run `:l Demo.hs` again), to make sure it compiles.
-Feel free to ask me for help if you have any issues.
-1. Search for one of these new `User`s by their name:
-    - `myUser = findUser msgSys name` (make sure you use the most recent `MsgSys`!).
+    - Feel free to ask me for help if you have any issues.
+1. Type `allUsers msgSys` in `ghci` to check that your new `User`s exist (make sure you use the most recent `MsgSys`!).
+1. Search for one of these new `User`s by their `Name`:
+    - `myUser = findUser msgSys name`.
 1. `login` as the other `User`:
     - `myLoggedInUser = login name password msgSys`
 1. Reload the file in `ghci`, then `send` a message from your new `LoggedInUser` to your new `User`:
