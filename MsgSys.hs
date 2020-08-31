@@ -1,8 +1,10 @@
-{- 
+{-
     This file defines the messaging system's basic functions and types.
     It exports all the functions and types above the word "PRIVATE" below,
     so they can be used in Demo.hs.
 -}
+
+{-# LANGUAGE FlexibleInstances #-}
 
 module MsgSys(
     emptyMsgSys,
@@ -19,129 +21,187 @@ module MsgSys(
     Name(..),
     Password(..),
     User(..),
+    Displayable(..),
     MsgSys
 ) where
 
 import Data.List
 
 emptyMsgSys :: MsgSys
-emptyMsgSys = registerUser (name alerterUser) alerterPassword (MsgSys [] [])
+emptyMsgSys = registerUser alerterName alerterPassword (MsgSys [] [])
 
 alerter :: LoggedInUser
-alerter = UserPassword alerterUser alerterPassword
+alerter = login alerterName alerterPassword emptyMsgSys
 
 login :: Name -> Password -> MsgSys -> LoggedInUser
-login name password msgSys =
-    let liUser = UserPassword (User name) password
-    in  if isValidLogin msgSys liUser then liUser else invalidUserPassword
+login name password msgSys = validateLogin msgSys (loginAttempt name password)
 
--- Note: this function only allows "name" to be registered once. Thus, it 
--- doesn't allow you to change the "Password" of a registered "User".
+-- Note: this function only allows "name" to be registered once. If you try
+-- to register it again, the MsgSys will not change
 registerUser :: Name -> Password -> MsgSys -> MsgSys
 registerUser name password msgSys =
-    let liUser = UserPassword (User name) password
-    in  if user liUser == user invalidUserPassword || isUser msgSys liUser
-        then msgSys
-        else msgSys {registeredUsers = liUser : registeredUsers msgSys}
+    if canRegister msgSys userPword
+    then msgSys {registeredUsers = userPword : registeredUsers msgSys}
+    else msgSys
 
+    where userPword = UserPassword (User name) password
+
+-- Note: the message will only be sent if the login attempt succeeded and the
+-- recipient is a registered User. The underscore symbol "_" is a placeholder
+-- for parameters that we don't care about.
 send :: String -> UserPair -> MsgSys -> MsgSys
-send msg pair msgSys = 
-    if isValidLogin msgSys (sender pair)
-    then msgSys {allMessages = StoredMessage pair msg : allMessages msgSys}
-    else msgSys -- unregistered sender cannot send messages
+send _ (Pair LoginFailed _) msgSys = msgSys
+send _ (Pair _ NonExistentUser) msgSys = msgSys
+send msg pair msgSys =
+    msgSys {allMessages = StoredMessage pair msg : allMessages msgSys}
 
 messages :: MsgSys -> User -> [String]
-messages msgSys user =
-    let storedMsgs = filter (involvesUser user) (allMessages msgSys)
-    in  map message storedMsgs
+messages msgSys user = map message storedMsgs
+    where storedMsgs = filter (involvesUser user) (allMessages msgSys)
 
 findUser :: MsgSys -> Name -> User
-findUser msgSys queryName = 
-    let users = filter ((== queryName) . name) (allUsers msgSys)
-    in if null users then user invalidUserPassword else head users
+findUser msgSys queryName = if null users then NonExistentUser else head users
+    where users = filter (== User queryName) (allUsers msgSys)
 
 allUsers :: MsgSys -> [User]
-allUsers msgSys = map user (registeredUsers msgSys)
+allUsers msgSys = map upUser (registeredUsers msgSys)
 
 compose :: [MsgSys -> MsgSys] -> MsgSys -> MsgSys
 compose = foldr (.) id
 
-user :: UserPassword -> User
-user = user'
+user :: LoggedInUser -> User
+user (LoggedIn userPword) = upUser userPword
+user LoginFailed = NonExistentUser
 
-password :: UserPassword -> Password
-password = password'
+password :: LoggedInUser -> Password
+password (LoggedIn userPword) = upPassword userPword
+password LoginFailed = UndefinedPassword
 
-type LoggedInUser = UserPassword
 data UserPair = Pair LoggedInUser User deriving(Eq,Show)
 data Name = Name String deriving(Eq,Show)
-data Password = Password String deriving(Eq,Show)
-data User = User {name :: Name} deriving(Eq)
+data Password = Password String | UndefinedPassword deriving(Eq,Show)
+data User = User Name | NonExistentUser deriving(Eq,Show)
+
+class Displayable a where
+    display :: a -> IO ()
+
 
 -- =============================================================================
 -- PRIVATE
+--
+-- The functions, and most of the types, below are hidden from other modules
+-- (i.e. they have been deliberately omitted from the export list in parentheses
+-- at the top of this file, after "module MsgSys"). E.g. code in the Demo module
+-- cannot call any of these functions. However, ghci will give you full access
+-- to everything in this module, if you load the module into it. To do this,
+-- type ":l MsgSys".
 -- =============================================================================
 
 alerterPassword = Password "Extremely secure password"
-alerterUser = User (Name "Alerter")
-invalidUserPassword = UserPassword (User (Name "[Invalid user]")) (Password "")
+alerterName = Name "Alerter"
+alerterUser = User alerterName
 
 sender :: UserPair -> LoggedInUser
-sender (Pair liUser _) = liUser
+sender (Pair loggedInUser _) = loggedInUser
 
 recipient :: UserPair -> User
 recipient (Pair _ user) = user
 
 involvesUser :: User -> StoredMessage -> Bool
-involvesUser u storedMsg = 
+involvesUser u storedMsg =
     let pair = userPair storedMsg
     in  user (sender pair) == u || recipient pair == u
 
--- This function returns true if msgSys has a UserPassword that satisfies 
+-- This function returns true if msgSys has a UserPassword that satisfies
 -- "condition".
-hasUserPassword :: (UserPassword -> Bool) -> MsgSys -> Bool
-hasUserPassword condition msgSys = any condition (registeredUsers msgSys)
+hasSatisfyingUserPassword :: MsgSys -> (UserPassword -> Bool) -> Bool
+hasSatisfyingUserPassword msgSys condition =
+    any condition (registeredUsers msgSys)
 
-isValidLogin :: MsgSys -> UserPassword -> Bool
-isValidLogin msgSys userPword = hasUserPassword (== userPword) msgSys
+validateLogin :: MsgSys -> LoginAttempt -> LoggedInUser
+validateLogin msgSys (LoginAttempt userPword) =
+    if hasSatisfyingUserPassword msgSys (== userPword)
+    then LoggedIn userPword
+    else LoginFailed
 
-isUser :: MsgSys -> UserPassword -> Bool
-isUser msgSys userPword = hasUserPassword ((== user userPword) . user) msgSys
+hasRegistered :: MsgSys -> User -> Bool
+hasRegistered msgSys queryUser = hasSatisfyingUserPassword msgSys sameUser
+    where
+        sameUser :: UserPassword -> Bool
+        sameUser existingUserPword = queryUser == upUser existingUserPword
 
-data UserPassword = 
-    UserPassword {
-        user' :: User,
-        password' :: Password
-    } deriving (Eq)
+-- UserPassword can only register if the User and Password are defined,
+-- and the User has not already registered
+canRegister :: MsgSys -> UserPassword -> Bool
+canRegister _ (UserPassword NonExistentUser _) = False
+canRegister _ (UserPassword _ UndefinedPassword) = False
+canRegister msgSys userPword = not (hasRegistered msgSys (upUser userPword))
 
-data StoredMessage = StoredMessage {userPair::UserPair, message::String}
 
-data MsgSys = MsgSys {
-    allMessages :: [StoredMessage],
-    registeredUsers :: [UserPassword]
-}
+data LoginAttempt = LoginAttempt UserPassword deriving(Show)
+data LoggedInUser = LoggedIn UserPassword | LoginFailed deriving(Eq,Show)
+
+loginAttempt :: Name -> Password -> LoginAttempt
+loginAttempt name password =
+    LoginAttempt (
+        UserPassword (User name) password
+    )
+
+data UserPassword =
+    UserPassword {upUser :: User, upPassword :: Password} deriving(Eq,Show)
+
+data StoredMessage =
+    StoredMessage {userPair::UserPair, message::String} deriving(Show)
+
+data MsgSys =
+    MsgSys {
+        allMessages :: [StoredMessage],
+        registeredUsers :: [UserPassword]
+    } deriving(Show)
+
 
 -- =============================================================================
--- The following allows you to use the "show" function to convert User, 
--- UserPassword, StoredMessage and MsgSys to nice String.
--- E.g. if you type "emptyMsgSys" in ghci, it will display the result of calling
--- "show emptyMsgSys"
+-- The code below allows you to use the "display" function to display the
+-- contents of MsgSys with more readable formatting.
 -- =============================================================================
 
-instance Show User where
-    show (User (Name name)) = name
+instance Displayable MsgSys where
+    display msgSys = do
+        putStrLn "Messages (oldest first):"
+        sequence_ displayMsgs
+        putStrLn "Registered Users:"
+        sequence_ displayRegisteredUsers
+        where
+            displayMsgs :: [IO ()]
+            displayMsgs = map display (reverse (allMessages msgSys))
 
-instance Show UserPassword where
-    show userPassword = show (user userPassword)
+            displayRegisteredUsers :: [IO ()]
+            displayRegisteredUsers = map (prefixDisplayLn "  ") (registeredUsers msgSys)
 
-instance Show StoredMessage where
-    show storedMsg = 
-        let (Pair from to) = userPair storedMsg
-        in  "  From: "++show from++"\n  To: "++show to++"\n  Message: "++
-            message storedMsg++"\n\n"
+instance Displayable StoredMessage where
+    display storedMsg = do
+        prefixDisplayLn "  From: " from
+        prefixDisplayLn "  To: " to
+        prefixDisplayLn "  Message: " (message storedMsg)
+        putStrLn ""
+        where (Pair from to) = userPair storedMsg
 
-instance Show MsgSys where
-    show msgSys = 
-        let msgs     = concatMap show (reverse (allMessages msgSys))
-            regUsers = concatMap ((++ "\n  ") . show) (registeredUsers msgSys)
-        in  "Messages (oldest first):\n"++msgs ++ "Registered Users:\n  "++regUsers
+instance Displayable LoggedInUser where
+    display LoginFailed = putStr "[Login attempt failed]"
+    display (LoggedIn userPword) = display userPword
+
+instance Displayable UserPassword where
+    display userPassword = display (upUser userPassword)
+
+instance Displayable User where
+    display (User (Name name)) = putStr name
+    display NonExistentUser = putStr "[Non-existent User]"
+
+instance Displayable String where
+    display string = putStr string
+
+prefixDisplayLn :: Displayable a => String -> a -> IO ()
+prefixDisplayLn prefix a = do
+    putStr prefix
+    display a
+    putStrLn ""

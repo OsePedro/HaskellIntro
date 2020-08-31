@@ -16,7 +16,7 @@ To play around with the messaging system, do the following:
     1. Option 2: **Clone the Git repository:**
         1. If you don't already have Git, use [these instructions](https://git-scm.com/downloads) to get it.
         1. Launch a terminal and run `git clone git@github.com:OsePedro/HaskellIntro.git` to clone this repository.
-1. **Text editor:** You'll need a text editor to edit the code. 
+1. **Text editor:** You'll need a text editor to edit the code.
 If you want syntax highlighting, try:
     - [Visual Studio Code](https://code.visualstudio.com/) with the [Haskell](https://marketplace.visualstudio.com/items?itemName=haskell.haskell) extension;
     - or [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
@@ -29,7 +29,7 @@ If you want syntax highlighting, try:
 1. Type `msgSys1` in `ghci` to view a `MsgSys` that contains a few messages and `User`s.
 1. There are 3 `LoggedInUser`s: `alerter`, `ose` and `pedro`.
 Type `ose`, `pedro`, etc. to see the `Name`s of these `LoggedInUser`s.
-1. The `password` function displays the `Password` of a `LoggedInUser`. 
+1. The `password` function displays the `Password` of a `LoggedInUser`.
 Type `password alerter`, `password ose`, etc. to see their `Password`s.
 1. Open [Demo.hs](Demo.hs) in an editor.
 1. Add code that registers two new `User`s to `msgSys1`.

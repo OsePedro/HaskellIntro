@@ -1,9 +1,9 @@
-{-  
+{-
   This file contains the code that we went through in the presentation.
 
   It also contains a function "initialise", that creates "LoggedInUser"s "ose"
   and "pedro", and sends a few messages between them.
-  To send a message to a "LoggedInUser", like "ose", you need to get a "User" 
+  To send a message to a "LoggedInUser", like "ose", you need to get a "User"
   from it by typing "user ose", etc. You can then make this the second parameter
   of the "UserPair" -- e.g. "Pair alerter (user ose)".
 -}
@@ -19,7 +19,7 @@ alertee :: User -> UserPair
 alertee = Pair alerter
 
 alert :: String -> User -> MsgSys -> MsgSys
-alert msg user msgSys = send msg (alertee user) msgSys 
+alert msg user msgSys = send msg (alertee user) msgSys
 
 alertOutOfSpace :: User -> MsgSys -> MsgSys
 alertOutOfSpace = alert "You're out of storage space"
@@ -27,7 +27,7 @@ alertOutOfSpace = alert "You're out of storage space"
 messageLengths :: [String] -> [Int]
 messageLengths = map length
 
--- Note: "sum" is provided by the standard library, so 
+-- Note: "sum" is provided by the standard library, so
 sumMessageLengths :: [String] -> Int
 sumMessageLengths = sum . messageLengths
 
@@ -39,8 +39,8 @@ usedSpace msgSys user = sumMessageLengths (messages msgSys user)
 --    compose = foldr (.) id
 --
 -- "id" is provided by the standard library. It behaves like the "emptyResult"
--- function near the end of the presentation. 
--- 
+-- function near the end of the presentation.
+--
 -- You can use compose to compose any list of "MsgSys -> MsgSys" functions into
 -- a single function. E.g. see how it is used in "initialise" below.
 alertMultiOutOfSpace :: [User] -> MsgSys -> MsgSys
@@ -51,13 +51,13 @@ initialise :: (MsgSys,LoggedInUser,LoggedInUser)
 initialise = (msgSysWithMessages,ose,pedro)
   where
   oseName = Name "Ose"
-  osePassword = Password "Ose's secure password"
+  osePassword = Password "Ose's unguessable password"
 
   pedroName = Name "Pedro"
-  pedroPassword = Password "Pedro's securer password"
+  pedroPassword = Password "Pedro's beautiful password"
 
   msgSysWithUsers :: MsgSys
-  msgSysWithUsers = 
+  msgSysWithUsers =
     compose [
       registerUser pedroName pedroPassword,
       registerUser oseName osePassword
