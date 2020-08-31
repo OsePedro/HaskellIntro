@@ -51,10 +51,10 @@ initialise :: (MsgSys,LoggedInUser,LoggedInUser)
 initialise = (msgSysWithMessages,ose,pedro)
   where
   oseName = Name "Ose"
-  osePassword = Password "Ose's password"
+  osePassword = Password "Ose's secure password"
 
   pedroName = Name "Pedro"
-  pedroPassword = Password "Pedro's password"
+  pedroPassword = Password "Pedro's securer password"
 
   msgSysWithUsers :: MsgSys
   msgSysWithUsers = 

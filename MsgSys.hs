@@ -33,20 +33,20 @@ alerter = UserPassword alerterUser alerterPassword
 login :: Name -> Password -> MsgSys -> LoggedInUser
 login name password msgSys =
     let liUser = UserPassword (User name) password
-    in  if isRegistered liUser msgSys then liUser else invalidUserPassword
+    in  if isValidLogin msgSys liUser then liUser else invalidUserPassword
 
 -- Note: this function only allows "name" to be registered once. Thus, it 
 -- doesn't allow you to change the "Password" of a registered "User".
 registerUser :: Name -> Password -> MsgSys -> MsgSys
 registerUser name password msgSys =
     let liUser = UserPassword (User name) password
-    in  if liUser == invalidUserPassword || isRegistered liUser msgSys
+    in  if user liUser == user invalidUserPassword || isUser msgSys liUser
         then msgSys
         else msgSys {registeredUsers = liUser : registeredUsers msgSys}
 
 send :: String -> UserPair -> MsgSys -> MsgSys
 send msg pair msgSys = 
-    if isRegistered (sender pair) msgSys
+    if isValidLogin msgSys (sender pair)
     then msgSys {allMessages = StoredMessage pair msg : allMessages msgSys}
     else msgSys -- unregistered sender cannot send messages
 
@@ -84,7 +84,7 @@ data User = User {name :: Name} deriving(Eq)
 
 alerterPassword = Password "Extremely secure password"
 alerterUser = User (Name "Alerter")
-invalidUserPassword = UserPassword (User (Name "")) (Password "")
+invalidUserPassword = UserPassword (User (Name "[Invalid user]")) (Password "")
 
 sender :: UserPair -> LoggedInUser
 sender (Pair liUser _) = liUser
@@ -97,9 +97,16 @@ involvesUser u storedMsg =
     let pair = userPair storedMsg
     in  user (sender pair) == u || recipient pair == u
 
-isRegistered :: UserPassword -> MsgSys -> Bool
-isRegistered userPword msgSys = 
-    any ((== user userPword) . user) (registeredUsers msgSys)
+-- This function returns true if msgSys has a UserPassword that satisfies 
+-- "condition".
+hasUserPassword :: (UserPassword -> Bool) -> MsgSys -> Bool
+hasUserPassword condition msgSys = any condition (registeredUsers msgSys)
+
+isValidLogin :: MsgSys -> UserPassword -> Bool
+isValidLogin msgSys userPword = hasUserPassword (== userPword) msgSys
+
+isUser :: MsgSys -> UserPassword -> Bool
+isUser msgSys userPword = hasUserPassword ((== user userPword) . user) msgSys
 
 data UserPassword = 
     UserPassword {

@@ -4,7 +4,7 @@
 
 This repository contains a basic implementation of the messaging system that I used as a running example in my ["Introduction to Functional Programming" presentation](https://docs.google.com/presentation/d/1bIBQewtYiaXQy0kvyWsJ3YTIPQMGXIq1hXNsOXZcURI).
 
-## Getting Started
+## Loading the Code
 
 To play around with the messaging system, do the following:
 
@@ -19,10 +19,14 @@ To play around with the messaging system, do the following:
 1. Launch a terminal and navigate to the `HaskellIntro` directory that you downloaded/cloned.
 1. Run `ghci` &mdash; this is a REPL (an interactive environment), in which you can execute arbitrary Haskell expressions.
 1. Type `:l Demo.hs` to load the code.
-1. Type `msgSys1` to view a `MsgSys` that contains a few messages and `User`s.
 
 ## Things to Try
 
+1. Type `msgSys1` in `ghci` to view a `MsgSys` that contains a few messages and `User`s.
+1. There are 3 `LoggedInUser`s: `alerter`, `ose` and `pedro`.
+Type `ose`, `pedro`, etc. to see the `Name`s of these `LoggedInUser`s.
+1. The `password` function displays the `Password` of a `LoggedInUser`. 
+Type `password alerter`, `password ose`, etc. to see their `Password`s.
 1. Open [Demo.hs](Demo.hs) in an editor. If you want syntax highlighting, try:
     - [Visual Studio Code](https://code.visualstudio.com/) with the [Haskell](https://marketplace.visualstudio.com/items?itemName=haskell.haskell) extension;
     - or [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
