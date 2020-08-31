@@ -53,7 +53,7 @@ send msg pair msgSys =
 messages :: MsgSys -> User -> [String]
 messages msgSys user =
     let storedMsgs = filter (involvesUser user) (allMessages msgSys)
-    in  map show storedMsgs
+    in  map message storedMsgs
 
 findUser :: MsgSys -> Name -> User
 findUser msgSys queryName = 
