@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="send.svg"
+   inkscape:export-filename="/home/ose/Documents/Presentations/Introduction-to-Functional-Programming/send.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Send"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1312"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.3) rotate(180) translate(-2.3,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1306"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Send-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1312-8"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Send-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1312-5"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.1684468"
+     inkscape:cx="308.28543"
+     inkscape:cy="879.72273"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="false"
+     inkscape:window-width="1855"
+     inkscape:window-height="1176"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-global="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#eb560f;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821"
+       width="20"
+       height="5"
+       x="10"
+       y="44.5" />
+    <rect
+       style="opacity:1;fill:#eb560f;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-0"
+       width="20"
+       height="5"
+       x="30"
+       y="44.5" />
+    <rect
+       style="opacity:1;fill:#eb560f;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-6"
+       width="20"
+       height="5"
+       x="50"
+       y="44.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="15.395019"
+       y="48.111927"
+       id="text846"><tspan
+         sodipodi:role="line"
+         id="tspan844"
+         x="15.395019"
+         y="48.111927"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#ffffff;fill-opacity:1;stroke-width:0.06450032px">From</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="37.796562"
+       y="48.111927"
+       id="text850"><tspan
+         sodipodi:role="line"
+         id="tspan848"
+         x="37.796562"
+         y="48.111927"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#ffffff;fill-opacity:1;stroke-width:0.06450032px">To</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="53.449608"
+       y="48.189548"
+       id="text854"><tspan
+         sodipodi:role="line"
+         id="tspan852"
+         x="53.449608"
+         y="48.189548"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#ffffff;fill-opacity:1;stroke-width:0.06450032px">Message</tspan></text>
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-4"
+       width="20"
+       height="5"
+       x="10"
+       y="54.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-0-9"
+       width="20"
+       height="5"
+       x="30"
+       y="54.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-6-0"
+       width="20"
+       height="5"
+       x="50"
+       y="54.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-4-5"
+       width="20"
+       height="5"
+       x="10"
+       y="49.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-0-9-3"
+       width="20"
+       height="5"
+       x="30"
+       y="49.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-6-0-1"
+       width="20"
+       height="5"
+       x="50"
+       y="49.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="55.937744"
+       y="53.202148"
+       id="text846-2-5-9"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-0-3"
+         x="55.937744"
+         y="53.202148"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">&quot;hey&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.607481px;line-height:125%;font-family:'Catamaran Black';-inkscape-font-specification:'Catamaran Black, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08411223px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="15.319972"
+       y="41.058117"
+       id="text1114"><tspan
+         sodipodi:role="line"
+         id="tspan1112"
+         x="15.319972"
+         y="41.058117"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Latin Modern Mono';-inkscape-font-specification:'Latin Modern Mono';stroke-width:0.08411223px">msgSys0 :: MsgSys</tspan></text>
+    <rect
+       style="opacity:1;fill:#eb560f;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-02"
+       width="20"
+       height="5"
+       x="75"
+       y="64.5" />
+    <rect
+       style="opacity:1;fill:#eb560f;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-0-0"
+       width="20"
+       height="5"
+       x="95"
+       y="64.5" />
+    <rect
+       style="opacity:1;fill:#eb560f;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-6-7"
+       width="20"
+       height="5"
+       x="115"
+       y="64.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="80.39502"
+       y="68.111931"
+       id="text846-3"><tspan
+         sodipodi:role="line"
+         id="tspan844-1"
+         x="80.39502"
+         y="68.111931"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#ffffff;fill-opacity:1;stroke-width:0.06450032px">From</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="102.79654"
+       y="68.111931"
+       id="text850-0"><tspan
+         sodipodi:role="line"
+         id="tspan848-6"
+         x="102.79654"
+         y="68.111931"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#ffffff;fill-opacity:1;stroke-width:0.06450032px">To</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="118.4496"
+       y="68.189552"
+       id="text854-3"><tspan
+         sodipodi:role="line"
+         id="tspan852-1"
+         x="118.4496"
+         y="68.189552"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#ffffff;fill-opacity:1;stroke-width:0.06450032px">Message</tspan></text>
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-4-4"
+       width="20"
+       height="5"
+       x="75"
+       y="74.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-0-9-4"
+       width="20"
+       height="5"
+       x="95"
+       y="74.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-6-0-3"
+       width="20"
+       height="5"
+       x="115"
+       y="74.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-4-5-9"
+       width="20"
+       height="5"
+       x="75"
+       y="69.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-0-9-3-3"
+       width="20"
+       height="5"
+       x="95"
+       y="69.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-6-0-1-8"
+       width="20"
+       height="5"
+       x="115"
+       y="69.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="121.23013"
+       y="73.202148"
+       id="text846-2-5-9-4"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-0-3-9"
+         x="121.23013"
+         y="73.202148"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">&quot;hey&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.607481px;line-height:125%;font-family:'Catamaran Black';-inkscape-font-specification:'Catamaran Black, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.08411223px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="80.21785"
+       y="60.278542"
+       id="text1114-8"><tspan
+         sodipodi:role="line"
+         id="tspan1112-6"
+         x="80.21785"
+         y="60.278542"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Latin Modern Mono';-inkscape-font-specification:'Latin Modern Mono';stroke-width:0.08411223px">msgSys1 :: MsgSys</tspan></text>
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-4-5-9-7"
+       width="20"
+       height="5"
+       x="75"
+       y="79.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-0-9-3-3-8"
+       width="20"
+       height="5"
+       x="95"
+       y="79.5" />
+    <rect
+       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect821-6-0-1-8-8"
+       width="20"
+       height="5"
+       x="115"
+       y="79.5" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="115.90118"
+       y="78.435303"
+       id="text846-2-5-9-4-3"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-0-3-9-0"
+         x="115.90118"
+         y="78.435303"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">&quot;I miss u ❤&quot;</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send)"
+       d="m 6.5,49.5 0,8.5"
+       id="path1277"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-2)"
+       d="M 71.5,69.5 V 83"
+       id="path1277-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.63888741px;line-height:125%;font-family:'Catamaran Black';-inkscape-font-specification:'Catamaran Black, ';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="87.499992"
+       y="14.5"
+       id="text2456"><tspan
+         sodipodi:role="line"
+         id="tspan2454"
+         x="87.499992"
+         y="30.286804"
+         style="stroke-width:0.26458332px" /></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-5)"
+       d="m 70,39.5 c 12.5,0 22.5,0 32.5,12.5"
+       id="path1277-12"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="35.545868"
+       y="58.437016"
+       id="text846-2"><tspan
+         sodipodi:role="line"
+         id="tspan844-7"
+         x="35.545868"
+         y="58.437016"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Pedro</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="17.034758"
+       y="58.437016"
+       id="text846-2-2"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-6"
+         x="17.034758"
+         y="58.437016"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Ose</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="15.405405"
+       y="53.437012"
+       id="text846-2-4"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-3"
+         x="15.405405"
+         y="53.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Pedro</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="37.287815"
+       y="53.437012"
+       id="text846-2-2-5"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-6-8"
+         x="37.287815"
+         y="53.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Ose</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="100.30185"
+       y="78.437012"
+       id="text846-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-1"
+         x="100.30185"
+         y="78.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Pedro</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="82.228241"
+       y="78.437012"
+       id="text846-2-2-53"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-6-7"
+         x="82.228241"
+         y="78.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Ose</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="80.598907"
+       y="73.437012"
+       id="text846-2-4-1"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-3-3"
+         x="80.598907"
+         y="73.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Pedro</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="101.92178"
+       y="73.437012"
+       id="text846-2-2-5-7"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-6-8-4"
+         x="101.92178"
+         y="73.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Ose</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="80.598877"
+       y="83.437012"
+       id="text846-2-4-1-4"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-3-3-5"
+         x="80.598877"
+         y="83.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Pedro</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="101.92178"
+       y="83.437012"
+       id="text846-2-2-5-7-4"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-6-8-4-4"
+         x="101.92178"
+         y="83.437012"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Ose</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="50.947166"
+       y="58.202148"
+       id="text846-2-5-9-4-3-6"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-0-3-9-0-4"
+         x="50.947166"
+         y="58.202148"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">&quot;I miss u ❤&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="121.32742"
+       y="83.421745"
+       id="text846-2-5-9-4-9"><tspan
+         sodipodi:role="line"
+         id="tspan844-7-0-3-9-1"
+         x="121.32742"
+         y="83.421745"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">&quot;ok...&quot;</tspan></text>
+  </g>
+</svg>
