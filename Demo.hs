@@ -8,6 +8,8 @@
   of the "UserPair" -- e.g. "Pair alerter (user ose)".
 -}
 
+module Demo where
+
 import MsgSys
 
 (msgSys0,ose,pedro) = initialise
