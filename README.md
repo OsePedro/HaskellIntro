@@ -48,3 +48,9 @@ Feel free to look at it &mdash; it's quite short, and you might understand more 
 
 - [A Gentle Introduction to Haskell](https://www.haskell.org/tutorial/) &mdash; a short and sweet tutorial.
 - [Learn You a Haskell for Great Good](http://learnyouahaskell.com/) &mdash; I've barely read any of this, but what I've seen so far seems good, and it's free to read online.
+
+## Big Cash Prize!
+
+I created [this image](images/chicks.svg) for the presentation, then changed my mind about using it.
+But I like it so much that I thought it would be a shame not to share it with the world.
+I'll send £10 to the first person who correctly guesses what I was going to use it to illustrate.
