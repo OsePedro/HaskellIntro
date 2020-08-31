@@ -53,4 +53,4 @@ Feel free to look at it &mdash; it's quite short, and you might understand more 
 
 I created [this image](images/chicks.svg) for the presentation, then changed my mind about using it.
 But I like it so much that I thought it would be a shame not to share it with the world.
-I'll send £10 to the first person who correctly guesses what I was going to use it to illustrate.
+I'll send £10 to the first person who correctly guesses how I was going to relate it to the presentation.
