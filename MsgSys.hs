@@ -164,6 +164,10 @@ data StoredMessage =
 -- well to a system that can handle billions ofusers and messages, as the
 -- "register", "login", "findUser" and "userMessages" functions currently have
 -- to iterate over the whole list.
+--
+-- MsgSys also stores Passwords in plain text - again, this is for simplicity.
+-- Please don't do this in a real application! Follow OWASP's advice on password
+-- storage: https://bit.ly/3gQTUNY
 data MsgSys =
   MsgSys {
     allMessages :: [StoredMessage],
