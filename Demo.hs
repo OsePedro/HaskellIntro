@@ -54,11 +54,11 @@ alertMultiOutOfSpace users msgSys =
 initialise :: (MsgSys,LoggedInUser,LoggedInUser)
 initialise = (msgSysWithMessages,ose,pedro)
   where
-  oseName = name "Ose"
-  osePassword = password "Ose's unguessable password"
+  oseName = Name "Ose"
+  osePassword = Password "Ose's unguessable password"
 
-  pedroName = name "Pedro"
-  pedroPassword = password "Pedro's beautiful password"
+  pedroName = Name "Pedro"
+  pedroPassword = Password "Pedro's beautiful password"
 
   msgSysWithUsers :: MsgSys
   msgSysWithUsers =

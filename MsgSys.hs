@@ -6,8 +6,6 @@
 module MsgSys(
     emptyMsgSys,
     alerter,
-    name,
-    password,
     register,
     login,
     findUser,
@@ -18,9 +16,9 @@ module MsgSys(
     composeActions,
     asUser,
     display,
-    Name,
+    Name(Name),
     User,
-    Password,
+    Password(Password),
     LoggedInUser,
     UserPair,
     MsgSys
@@ -33,12 +31,6 @@ emptyMsgSys = register alerterName alerterPassword (MsgSys [] [])
 
 alerter :: LoggedInUser
 alerter = login alerterName alerterPassword emptyMsgSys
-
-name :: String -> Name
-name = Name
-
-password :: String -> Password
-password = Password
 
 -- Note: this function only allows "name" to be registered once. If you try
 -- to register it again, the MsgSys will not change
@@ -103,8 +95,8 @@ type UserPair = Maybe RawUserPair
 -- access to everything. To do this, type ":l MsgSys".
 -- =============================================================================
 
-alerterName = name "Alerter"
-alerterPassword = password "Extremely secure password"
+alerterName = Name "Alerter"
+alerterPassword = Password "Extremely secure password"
 
 rawCredentials :: Name -> Password -> RawCredentials
 rawCredentials name password = RawCredentials (RawUser name) password
@@ -191,7 +183,6 @@ instance Displayable MsgSys where
         putStrLn "Registered Users:"
         display doubleLine
         sequence_ displayRegisteredUsers
-
         where
         doubleLine = Separator '='
 
@@ -208,7 +199,6 @@ instance Displayable StoredMessage where
         prefixDisplay "  To: " to
         prefixDisplay "  Message: " (storedMessageString storedMsg)
         display (Separator '-')
-
         where
         (from, to) = storedRawUserPair storedMsg
 
