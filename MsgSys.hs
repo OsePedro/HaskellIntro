@@ -1,27 +1,27 @@
 {-
-    This file defines the messaging system's basic functions and types.
-    It exports all the functions and types above the word "PRIVATE" below,
-    so they can be used in Demo.hs.
+  This file defines the messaging system's basic functions and types.
+  It exports all the functions and types above the word "PRIVATE" below,
+  so they can be used in Demo.hs.
 -}
 module MsgSys(
-    emptyMsgSys,
-    alerter,
-    register,
-    login,
-    findUser,
-    allUsers,
-    userPair,
-    send,
-    userMessages,
-    composeActions,
-    asUser,
-    display,
-    Name(Name),
-    User,
-    Password(Password),
-    LoggedInUser,
-    UserPair,
-    MsgSys
+  emptyMsgSys,
+  alerter,
+  register,
+  login,
+  findUser,
+  allUsers,
+  userPair,
+  send,
+  userMessages,
+  composeActions,
+  asUser,
+  display,
+  Name(Name),
+  User,
+  Password(Password),
+  LoggedInUser,
+  UserPair,
+  MsgSys
 ) where
 
 import Data.List
@@ -36,24 +36,24 @@ alerter = login alerterName alerterPassword emptyMsgSys
 -- to register it again, the MsgSys will not change
 register :: Name -> Password -> MsgSys -> MsgSys
 register name password msgSys =
-    validateRegistration msgSys (rawCredentials name password)
+  validateRegistration msgSys (rawCredentials name password)
 
 login :: Name -> Password -> MsgSys -> LoggedInUser
 login name password msgSys = validateLogin msgSys (rawCredentials name password)
 
 findUser :: MsgSys -> Name -> User
 findUser msgSys name =
-    if null users then Nothing else Just (head users)
-    where users = filter (== RawUser name) (allRawUsers msgSys)
+  if null users then Nothing else Just (head users)
+  where users = filter (== RawUser name) (allRawUsers msgSys)
 
 allUsers :: MsgSys -> [User]
 allUsers msgSys = map Just (allRawUsers msgSys)
 
 userPair :: LoggedInUser -> User -> UserPair
 userPair creds user = do
-    rawCreds <- creds
-    rawUser <- user
-    Just (rawCreds, rawUser)
+  rawCreds <- creds
+  rawUser <- user
+  Just (rawCreds, rawUser)
 
 -- Note: the message will only be sent if the UserPair was created from a
 -- LoggedInUser and User that are both registered in "msgSys".
@@ -62,11 +62,11 @@ userPair creds user = do
 send :: String -> UserPair -> MsgSys -> MsgSys
 send _ Nothing msgSys = msgSys
 send msg (Just rawPair) msgSys =
-    msgSys {allMessages = storedMessage rawPair msg : allMessages msgSys}
+  msgSys {allMessages = storedMessage rawPair msg : allMessages msgSys}
 
 userMessages :: MsgSys -> User -> [String]
 userMessages msgSys user = map messageString storedMsgs
-    where storedMsgs = filter (involvesUser user) (allMessages msgSys)
+  where storedMsgs = filter (involvesUser user) (allMessages msgSys)
 
 composeActions :: [MsgSys -> MsgSys] -> MsgSys -> MsgSys
 composeActions = foldr (.) id
@@ -115,8 +115,8 @@ allRawUsers msgSys = map credsUser (allCredentials msgSys)
 
 involvesUser :: User -> StoredMessage -> Bool
 involvesUser user storedMsg =
-    sameUser user (fst rawPair) || user == Just (snd rawPair)
-    where rawPair = storedRawUserPair storedMsg
+  sameUser user (fst rawPair) || user == Just (snd rawPair)
+  where rawPair = storedRawUserPair storedMsg
 
 -- This function returns true if "msgSys" has RawCredentials that satisfy
 -- "condition".
@@ -125,45 +125,50 @@ anyCredentialsSatisfy msgSys condition = any condition (allCredentials msgSys)
 
 validateRegistration :: MsgSys -> RawCredentials -> MsgSys
 validateRegistration msgSys rawCreds =
-    if canRegister msgSys rawCreds
-    then msgSys {allCredentials = rawCreds : allCredentials msgSys}
-    else msgSys
+  if canRegister msgSys rawCreds
+  then msgSys {allCredentials = rawCreds : allCredentials msgSys}
+  else msgSys
 
 -- RawCredentials can only register if the User and Password are defined (i.e.
 -- not Nothing), and the User has not already registered
 canRegister :: MsgSys -> RawCredentials -> Bool
 canRegister msgSys rawCreds = not registered
-    where
-    user = Just (credsUser rawCreds)
-    registered = anyCredentialsSatisfy msgSys (sameUser user)
+  where
+  user = Just (credsUser rawCreds)
+  registered = anyCredentialsSatisfy msgSys (sameUser user)
 
 validateLogin :: MsgSys -> RawCredentials -> LoggedInUser
 validateLogin msgSys rawCreds =
-    if anyCredentialsSatisfy msgSys (== rawCreds)
-    then Just rawCreds
-    else Nothing
+  if anyCredentialsSatisfy msgSys (== rawCreds)
+  then Just rawCreds
+  else Nothing
 
 data RawUser = RawUser Name deriving(Eq,Show)
 type RawUserPair = (RawCredentials, RawUser)
 
 data RawCredentials =
-    RawCredentials {
-        credsUser :: RawUser,
-        credsPassword :: Password
-    } deriving(Eq,Show)
+  RawCredentials {
+    credsUser :: RawUser,
+    credsPassword :: Password
+  } deriving(Eq,Show)
 
 data MessageString = MessageString String deriving(Eq,Show)
 data StoredMessage =
-    StoredMessage {
-        storedRawUserPair :: RawUserPair,
-        storedMessageString :: MessageString
-    } deriving(Eq,Show)
+  StoredMessage {
+    storedRawUserPair :: RawUserPair,
+    storedMessageString :: MessageString
+  } deriving(Eq,Show)
 
+-- MsgSys stores messages and credentials in lists, for the sake of simplicity.
+-- This is good enough for a toy application like this, but it would not scale
+-- well to a system that can handle billions ofusers and messages, as the
+-- "register", "login", "findUser" and "userMessages" functions currently have
+-- to iterate over the whole list.
 data MsgSys =
-    MsgSys {
-        allMessages :: [StoredMessage],
-        allCredentials :: [RawCredentials]
-    } deriving(Eq,Show)
+  MsgSys {
+    allMessages :: [StoredMessage],
+    allCredentials :: [RawCredentials]
+  } deriving(Eq,Show)
 
 
 -- =============================================================================
@@ -172,51 +177,51 @@ data MsgSys =
 -- =============================================================================
 
 class Displayable a where
-    display :: a -> IO ()
+  display :: a -> IO ()
 
 instance Displayable MsgSys where
-    display msgSys = do
-        display doubleLine
-        putStrLn "Messages (oldest first):"
-        display doubleLine
-        sequence_ displayMsgs
-        putStrLn "Registered Users:"
-        display doubleLine
-        sequence_ displayRegisteredUsers
-        where
-        doubleLine = Separator '='
+  display msgSys = do
+    display doubleLine
+    putStrLn "Messages (oldest first):"
+    display doubleLine
+    sequence_ displayMsgs
+    putStrLn "Registered Users:"
+    display doubleLine
+    sequence_ displayRegisteredUsers
+    where
+    doubleLine = Separator '='
 
-        displayMsgs :: [IO ()]
-        displayMsgs = map display (reverse (allMessages msgSys))
+    displayMsgs :: [IO ()]
+    displayMsgs = map display (reverse (allMessages msgSys))
 
-        displayRegisteredUsers :: [IO ()]
-        displayRegisteredUsers =
-            map (prefixDisplay "  ") (allCredentials msgSys)
+    displayRegisteredUsers :: [IO ()]
+    displayRegisteredUsers =
+      map (prefixDisplay "  ") (allCredentials msgSys)
 
 instance Displayable StoredMessage where
-    display storedMsg = do
-        prefixDisplay "  From: " from
-        prefixDisplay "  To: " to
-        prefixDisplay "  Message: " (storedMessageString storedMsg)
-        display (Separator '-')
-        where
-        (from, to) = storedRawUserPair storedMsg
+  display storedMsg = do
+    prefixDisplay "  From: " from
+    prefixDisplay "  To: " to
+    prefixDisplay "  Message: " (storedMessageString storedMsg)
+    display (Separator '-')
+    where
+    (from, to) = storedRawUserPair storedMsg
 
 instance Displayable RawCredentials where
-    display creds = display (credsUser creds)
+  display creds = display (credsUser creds)
 
 instance Displayable RawUser where
-    display (RawUser (Name name)) = putStrLn name
+  display (RawUser (Name name)) = putStrLn name
 
 instance Displayable MessageString where
-    display (MessageString string) = putStrLn string
+  display (MessageString string) = putStrLn string
 
 data Separator = Separator Char
 
 instance Displayable Separator where
-    display (Separator char) = putStrLn (replicate 80 char)
+  display (Separator char) = putStrLn (replicate 80 char)
 
 prefixDisplay :: Displayable a => String -> a -> IO ()
 prefixDisplay prefix a = do
-    putStr prefix
-    display a
+  putStr prefix
+  display a

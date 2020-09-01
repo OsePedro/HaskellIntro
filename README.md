@@ -4,9 +4,9 @@
 
 This repository contains a basic implementation of the messaging system that I used as a running example in my ["Introduction to Functional Programming" presentation](https://docs.google.com/presentation/d/1bIBQewtYiaXQy0kvyWsJ3YTIPQMGXIq1hXNsOXZcURI).
 
-## Getting Started
+## Installation
 
-To play around with the messaging system, do the following:
+To install the software you need to play around with the messaging system, do the following:
 
 1. **Install Haskell:** follow [these instructions](https://www.haskell.org/platform/).
 1. **Download this repository:**
@@ -20,33 +20,54 @@ To play around with the messaging system, do the following:
 If you want syntax highlighting, try:
     - [Visual Studio Code](https://code.visualstudio.com/) with the [Haskell](https://marketplace.visualstudio.com/items?itemName=haskell.haskell) extension;
     - or [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
-1. Launch a terminal and navigate to the `HaskellIntro` directory that you downloaded/cloned.
-1. Run `ghci` &mdash; this is a REPL (an interactive environment), in which you can execute arbitrary Haskell expressions.
-1. Type `:l Demo.hs` to load the code.
 
 ## Things to Try
 
+1. Launch a terminal and navigate to the `HaskellIntro` directory that you downloaded/cloned.
+1. Run `ghci`.
+This is a REPL (an interactive environment), in which you can execute arbitrary Haskell expressions.
+1. Type `:l Demo` to load the code.
+    - The loaded `Demo` module defines:
+        - Two instances of `MsgSys` called `msgSys0` and `msgSys1`;
+        - Three `LoggedInUser`s: `alerter`, `ose` and `pedro`;
+        - The functions and types described in the presentation.
+    - There are two ways to view values like `msgSys1` and `ose`:
+        1. Type its name into `ghci` and press enter.
+        This will print a Haskell expression that represents the full state of the value.
+        E.g. if you type `ose`, it will print
+
+                LoggedIn (UserPassword {upUser = User (Name "Ose"), upPassword = Password "Ose's unguessable password"})
+
+        1. Use the `display` function to print a more readable representation of the value.
+        This is especially useful for `MsgSys`, as their Haskell expressions are very long.
+        Try executing `display msgSys1` and compare it to what you get when you type `msgSys1` to see what I mean.
 1. Type `msgSys1` in `ghci` to view a `MsgSys` that contains a few messages and `User`s.
-1. There are 3 `LoggedInUser`s: `alerter`, `ose` and `pedro`.
+1. There are
 Type `ose`, `pedro`, etc. to see the `Name`s of these `LoggedInUser`s.
 1. The `password` function displays the `Password` of a `LoggedInUser`.
 Type `password alerter`, `password ose`, etc. to see their `Password`s.
 1. Open [Demo.hs](Demo.hs) in an editor.
 1. Add code that registers two new `User`s to `msgSys1`.
     - The `initialise` function at the bottom of the file demonstrates how to do this.
-1. Reload the file in `ghci` (i.e. run `:l Demo.hs` again), to make sure it compiles.
+1. Reload the file in `ghci` (i.e. run `:l Demo` again), to make sure it compiles.
     - Feel free to ask me for help if you have any issues.
 1. Type `allUsers msgSys` in `ghci` to check that your new `User`s exist (make sure you use the most recent `MsgSys`!).
 1. Search for one of these new `User`s by their `Name`:
-    - `myUser = findUser msgSys name`.
+
+        myUser = findUser msgSys name
+
 1. `login` as the other `User`:
-    - `myLoggedInUser = login name password msgSys`
+
+        myLoggedInUser = login name password msgSys`
+
 1. Reload the file in `ghci`, then `send` a message from your new `LoggedInUser` to your new `User`:
     - If you execute `send message userPair msgSys` in `ghci`, it will show you the new state of the `MsgSys`.
 1. Try out some of the functions that we wrote in the presentation, e.g.:
-    - `alertOutOfSpace user msgSys`
-    - `usedSpace msgSys user`
-    - `alertMultiOutOfSpace listOfUsers msgSys`
+
+        alertOutOfSpace user msgSys
+        usedSpace msgSys user
+        alertMultiOutOfSpace listOfUsers msgSys
+
 1. Have a go at the ["homework" 😁](https://docs.google.com/presentation/d/1bIBQewtYiaXQy0kvyWsJ3YTIPQMGXIq1hXNsOXZcURI/edit#slide=id.g9342e8f7da_2_30).
 1. [MsgSys.hs](MsgSys.hs) defines the system's basic types and functions, e.g. `MsgSys`, `User`, `send`, etc.
 Feel free to look at it &mdash; it's quite short, and you might understand more of it than you'd expect!
