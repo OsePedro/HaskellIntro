@@ -7,6 +7,9 @@
 {-# LANGUAGE FlexibleInstances #-}
 
 module MsgSys(
+  name,
+  password,
+  message,
   emptyMsgSys,
   alerter,
   register,
@@ -16,18 +19,29 @@ module MsgSys(
   userPair,
   send,
   userMessages,
+  messageSize,
   composeActions,
   asUser,
   display,
-  Name(Name),
+  Name,
   User,
-  Password(Password),
+  Password,
   LoggedInUser,
+  Message,
   UserPair,
   MsgSys
 ) where
 
 import Data.List
+
+name :: String -> Name
+name = StringWrapper
+
+password :: String -> Password
+password = StringWrapper
+
+message :: String -> Message
+message = StringWrapper
 
 emptyMsgSys :: MsgSys
 emptyMsgSys = register alerterName alerterPassword (MsgSys [] [])
@@ -62,14 +76,17 @@ userPair creds user = do
 -- LoggedInUser and User that are both registered in "msgSys".
 -- The underscore symbol "_" is a placeholder for parameters that we don't care
 -- about.
-send :: String -> UserPair -> MsgSys -> MsgSys
+send :: Message -> UserPair -> MsgSys -> MsgSys
 send _ Nothing msgSys = msgSys
 send msg (Just rawPair) msgSys =
-  msgSys {allMessages = storedMessage rawPair msg : allMessages msgSys}
+  msgSys {allEnvelopes = Envelope rawPair msg : allEnvelopes msgSys}
 
-userMessages :: MsgSys -> User -> [String]
-userMessages msgSys user = map messageString storedMsgs
-  where storedMsgs = filter (involvesUser user) (allMessages msgSys)
+userMessages :: MsgSys -> User -> [Message]
+userMessages msgSys user = map envMessage envelopes
+  where envelopes = filter (involvesUser user) (allEnvelopes msgSys)
+
+messageSize :: Message -> Int
+messageSize = length . unwrapString
 
 composeActions :: [MsgSys -> MsgSys] -> MsgSys -> MsgSys
 composeActions = foldr (.) id
@@ -80,12 +97,12 @@ asUser = fmap credsUser
 display :: Displayable a => a -> IO ()
 display = formattedDisplay (Format "" "\n")
 
-data Name = Name String deriving(Eq,Show)
+type Name = StringWrapper NameTag
 type User = Maybe RawUser
-data Password = Password String deriving(Eq,Show)
+type Password = StringWrapper PasswordTag
 type LoggedInUser = Maybe RawCredentials
+type Message = StringWrapper MessageTag
 type UserPair = Maybe RawUserPair
-
 
 -- =============================================================================
 --                                 PRIVATE
@@ -101,8 +118,11 @@ type UserPair = Maybe RawUserPair
 -- access to everything. To do this, type ":l MsgSys".
 -- =============================================================================
 
-alerterName = Name "Alerter"
-alerterPassword = Password "Extremely secure password"
+alerterName = name "Alerter"
+alerterPassword = password "Extremely secure password"
+
+unwrapString :: StringWrapper tag -> String
+unwrapString (StringWrapper string) = string
 
 rawCredentials :: Name -> Password -> RawCredentials
 rawCredentials name password = RawCredentials (RawUser name) password
@@ -110,19 +130,13 @@ rawCredentials name password = RawCredentials (RawUser name) password
 sameUser :: User -> RawCredentials -> Bool
 sameUser user rawCreds = user == Just (credsUser rawCreds)
 
-storedMessage :: RawUserPair -> String -> StoredMessage
-storedMessage rawPair msg = StoredMessage rawPair (MessageString msg)
-
-messageString :: StoredMessage -> String
-messageString (StoredMessage _ (MessageString string)) = string
-
 allRawUsers :: MsgSys -> [RawUser]
 allRawUsers msgSys = map credsUser (allCredentials msgSys)
 
-involvesUser :: User -> StoredMessage -> Bool
+involvesUser :: User -> Envelope -> Bool
 involvesUser user storedMsg =
   sameUser user (fst rawPair) || user == Just (snd rawPair)
-  where rawPair = storedRawUserPair storedMsg
+  where rawPair = envRawUserPair storedMsg
 
 -- This function returns true if "msgSys" has RawCredentials that satisfy
 -- "condition".
@@ -158,11 +172,10 @@ data RawCredentials =
     credsPassword :: Password
   } deriving(Eq,Show)
 
-data MessageString = MessageString String deriving(Eq,Show)
-data StoredMessage =
-  StoredMessage {
-    storedRawUserPair :: RawUserPair,
-    storedMessageString :: MessageString
+data Envelope =
+  Envelope {
+    envRawUserPair :: RawUserPair,
+    envMessage :: Message
   } deriving(Eq,Show)
 
 -- MsgSys stores messages and credentials in lists, for the sake of simplicity.
@@ -176,9 +189,14 @@ data StoredMessage =
 -- storage: https://bit.ly/3gQTUNY
 data MsgSys =
   MsgSys {
-    allMessages :: [StoredMessage],
+    allEnvelopes :: [Envelope],
     allCredentials :: [RawCredentials]
   } deriving(Eq,Show)
+
+data StringWrapper tag = StringWrapper String deriving(Eq,Show)
+data NameTag = NameTag deriving(Eq,Show)
+data PasswordTag = PasswordTag deriving(Eq,Show)
+data MessageTag = MessageTag deriving(Eq,Show)
 
 -- =============================================================================
 -- The code below allows you to use the "display" function to display the
@@ -213,7 +231,7 @@ instance Displayable MsgSys where
     dispLn doubleLine
     dispLn "Messages (oldest first):"
     dispLn doubleLine
-    displayList (indent format) (Line '-') (reverse (allMessages msgSys))
+    displayList (indent format) (Line '-') (reverse (allEnvelopes msgSys))
     dispLn doubleLine
     dispLn "Registered Users:"
     dispLn doubleLine
@@ -225,10 +243,10 @@ instance Displayable MsgSys where
     dispLn :: Displayable a => a -> IO ()
     dispLn = displayLn format
 
-instance Displayable StoredMessage where
+instance Displayable Envelope where
   formattedDisplay format storedMsg = do
-    displayLn format (storedRawUserPair storedMsg)
-    prefixedDisplay format "Message: " (storedMessageString storedMsg)
+    displayLn format (envRawUserPair storedMsg)
+    prefixedDisplay format "Message: " (envMessage storedMsg)
 
 instance Displayable RawCredentials where
   formattedDisplay format creds = do
@@ -263,14 +281,8 @@ instance Displayable UserPair where
   formattedDisplay format (Just rawUserPair) =
     formattedDisplay format rawUserPair
 
-instance Displayable Name where
-  formattedDisplay format (Name name) = formattedDisplay format name
-
-instance Displayable Password where
-  formattedDisplay format (Password password) = formattedDisplay format password
-
-instance Displayable MessageString where
-  formattedDisplay format (MessageString string) =
+instance Displayable (StringWrapper tag) where
+  formattedDisplay format (StringWrapper string) =
     formattedDisplay format string
 
 instance Displayable Line where

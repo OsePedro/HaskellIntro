@@ -13,31 +13,31 @@ module Demo where
 import MsgSys
 
 (msgSys0,ose,pedro) = initialise
-msgSys1 = send "ok..." (userPair pedro (asUser ose)) msgSys0
+msgSys1 = send (message "ok...") (userPair pedro (asUser ose)) msgSys0
 
 alertee :: User -> UserPair
 alertee = userPair alerter
 
-alert :: String -> User -> MsgSys -> MsgSys
+alert :: Message -> User -> MsgSys -> MsgSys
 alert msg user msgSys = send msg (alertee user) msgSys
 
 alertOutOfSpace :: User -> MsgSys -> MsgSys
-alertOutOfSpace = alert "You're out of storage space"
+alertOutOfSpace = alert (message "You're out of storage space")
 
-messageLengths :: [String] -> [Int]
-messageLengths = map length
+multiMessageSizes :: [Message] -> [Int]
+multiMessageSizes = map messageSize
 
 -- Note: the "sum" function that is defined in the presentation is provided by
 -- the standard library.
-sumMessageLengths :: [String] -> Int
-sumMessageLengths = sum . messageLengths
+sumMessageSizes :: [Message] -> Int
+sumMessageSizes = sum . multiMessageSizes
 
 usedSpace :: MsgSys -> User -> Int
-usedSpace msgSys user = sumMessageLengths (userMessages msgSys user)
+usedSpace msgSys user = sumMessageSizes (userMessages msgSys user)
 
 -- Note: composeActions is defined in MsgSys.hs as:
 --
---    ccomposeChanges = foldr (.) id
+--    composeActions = foldr (.) id
 --
 -- "id" is provided by the standard library. It behaves like the "emptyResult"
 -- function near the end of the presentation.
@@ -54,11 +54,11 @@ alertMultiOutOfSpace users msgSys =
 initialise :: (MsgSys,LoggedInUser,LoggedInUser)
 initialise = (msgSysWithMessages,ose,pedro)
   where
-  oseName = Name "Ose"
-  osePassword = Password "Ose's unguessable password"
+  oseName = name "Ose"
+  osePassword = password "Ose's unguessable password"
 
-  pedroName = Name "Pedro"
-  pedroPassword = Password "Pedro's beautiful password"
+  pedroName = name "Pedro"
+  pedroPassword = password "Pedro's beautiful password"
 
   msgSysWithUsers :: MsgSys
   msgSysWithUsers =
@@ -73,6 +73,6 @@ initialise = (msgSysWithMessages,ose,pedro)
   msgSysWithMessages :: MsgSys
   msgSysWithMessages =
     composeActions [
-      send "I miss u ❤" (userPair ose (asUser pedro)),
-      send "hey" (userPair pedro (asUser ose))
+      send (message "I miss u ❤") (userPair ose (asUser pedro)),
+      send (message "hey") (userPair pedro (asUser ose))
     ] msgSysWithUsers
