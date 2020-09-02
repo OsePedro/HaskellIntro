@@ -46,8 +46,7 @@ usedSpace msgSys user = sumMessageSizes (userMessages msgSys user)
 -- functions into a single function. E.g. see how it is used in "initialise"
 -- below.
 alertMultiOutOfSpace :: [User] -> MsgSys -> MsgSys
-alertMultiOutOfSpace users =
-  composeActions (map alertOutOfSpace users)
+alertMultiOutOfSpace users = composeActions (map alertOutOfSpace users)
 
 
 -- Note: Haskell uses indentation to define scopes, much like Python
