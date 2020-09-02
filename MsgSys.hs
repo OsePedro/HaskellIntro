@@ -3,6 +3,9 @@
   It exports all the functions and types above the word "PRIVATE" below,
   so they can be used in Demo.hs.
 -}
+
+{-# LANGUAGE FlexibleInstances #-}
+
 module MsgSys(
   emptyMsgSys,
   alerter,
@@ -73,6 +76,9 @@ composeActions = foldr (.) id
 
 asUser :: LoggedInUser -> User
 asUser = fmap credsUser
+
+display :: Displayable a => a -> IO ()
+display = formattedDisplay (Format "" "\n")
 
 data Name = Name String deriving(Eq,Show)
 type User = Maybe RawUser
@@ -174,58 +180,119 @@ data MsgSys =
     allCredentials :: [RawCredentials]
   } deriving(Eq,Show)
 
-
 -- =============================================================================
 -- The code below allows you to use the "display" function to display the
 -- contents of MsgSys with more readable formatting.
 -- =============================================================================
 
+data Format = Format {prefix::String, suffix::String}
+data Line = Line Char
+data Blank = Blank
+
+newLine :: Format -> Format
+newLine format = format {suffix="\n"}
+
+indent :: Format -> Format
+indent format = format {prefix="  " ++ prefix format}
+
+displayLn :: Displayable a => Format -> a -> IO ()
+displayLn format = formattedDisplay (newLine format)
+
+prefixedDisplay :: Displayable a => Format -> String -> a -> IO ()
+prefixedDisplay format pre =
+  formattedDisplay format {prefix=prefix format ++ pre}
+
+prefixedDisplayLn :: Displayable a => Format -> String -> a -> IO ()
+prefixedDisplayLn format = prefixedDisplay (newLine format)
+
 class Displayable a where
-  display :: a -> IO ()
+  formattedDisplay :: Format -> a -> IO ()
 
 instance Displayable MsgSys where
-  display msgSys = do
-    display doubleLine
-    putStrLn "Messages (oldest first):"
-    display doubleLine
-    sequence_ displayMsgs
-    putStrLn "Registered Users:"
-    display doubleLine
-    sequence_ displayRegisteredUsers
+  formattedDisplay format msgSys = do
+    dispLn doubleLine
+    dispLn "Messages (oldest first):"
+    dispLn doubleLine
+    displayList (indent format) (Line '-') (reverse (allMessages msgSys))
+    dispLn doubleLine
+    dispLn "Registered Users:"
+    dispLn doubleLine
+    displayList (indent format) Blank (map credsUser (allCredentials msgSys))
+    formattedDisplay format doubleLine
     where
-    doubleLine = Separator '='
+    doubleLine = Line '='
 
-    displayMsgs :: [IO ()]
-    displayMsgs = map display (reverse (allMessages msgSys))
-
-    displayRegisteredUsers :: [IO ()]
-    displayRegisteredUsers =
-      map (prefixDisplay "  ") (allCredentials msgSys)
+    dispLn :: Displayable a => a -> IO ()
+    dispLn = displayLn format
 
 instance Displayable StoredMessage where
-  display storedMsg = do
-    prefixDisplay "  From: " from
-    prefixDisplay "  To: " to
-    prefixDisplay "  Message: " (storedMessageString storedMsg)
-    display (Separator '-')
-    where
-    (from, to) = storedRawUserPair storedMsg
+  formattedDisplay format storedMsg = do
+    displayLn format (storedRawUserPair storedMsg)
+    prefixedDisplay format "Message: " (storedMessageString storedMsg)
 
 instance Displayable RawCredentials where
-  display creds = display (credsUser creds)
+  formattedDisplay format creds = do
+    prefixedDisplayLn format "User: " (credsUser creds)
+    prefixedDisplay format "Password: " (credsPassword creds)
 
 instance Displayable RawUser where
-  display (RawUser (Name name)) = putStrLn name
+  formattedDisplay format (RawUser name) = formattedDisplay format name
+
+instance Displayable RawUserPair where
+  formattedDisplay format (from,to) = do
+    prefixedDisplayLn format "From: " (credsUser from)
+    prefixedDisplay format "To: " to
+
+instance Displayable LoggedInUser where
+  formattedDisplay format Nothing =
+    formattedDisplay format "[Login failed: check Name & Password]"
+
+  formattedDisplay format (Just rawCreds) = formattedDisplay format rawCreds
+
+instance Displayable User where
+  formattedDisplay format Nothing =
+    formattedDisplay format "[User not found: check Name]"
+
+  formattedDisplay format (Just rawUser) = formattedDisplay format rawUser
+
+instance Displayable UserPair where
+  formattedDisplay format Nothing =
+    formattedDisplay format
+      "[Undefined UserPair: check Names and LoggedInUser Password]"
+
+  formattedDisplay format (Just rawUserPair) =
+    formattedDisplay format rawUserPair
+
+instance Displayable Name where
+  formattedDisplay format (Name name) = formattedDisplay format name
+
+instance Displayable Password where
+  formattedDisplay format (Password password) = formattedDisplay format password
 
 instance Displayable MessageString where
-  display (MessageString string) = putStrLn string
+  formattedDisplay format (MessageString string) =
+    formattedDisplay format string
 
-data Separator = Separator Char
+instance Displayable Line where
+  formattedDisplay format (Line char) =
+    formattedDisplay format (replicate noChars char)
+    where
+    noChars = max 0 (80 - length (prefix format))
 
-instance Displayable Separator where
-  display (Separator char) = putStrLn (replicate 80 char)
+instance Displayable Blank where
+  formattedDisplay _ Blank = return ()
 
-prefixDisplay :: Displayable a => String -> a -> IO ()
-prefixDisplay prefix a = do
-  putStr prefix
-  display a
+instance Displayable String where
+  formattedDisplay format string = do
+    putStr (prefix format)
+    putStr string
+    putStr (suffix format)
+
+displayList ::
+  (Displayable separator, Displayable a) => Format -> separator -> [a] -> IO ()
+displayList _ _ [] = return ()
+displayList format _ [a] = do formattedDisplay format a
+displayList format separator (a:as) = do
+  displayLn format a
+  displayLn format separator
+  displayList format separator as
