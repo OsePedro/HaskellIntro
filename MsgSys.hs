@@ -32,8 +32,6 @@ module MsgSys(
   MsgSys
 ) where
 
-import Data.List
-
 name :: String -> Name
 name = wrapString
 
