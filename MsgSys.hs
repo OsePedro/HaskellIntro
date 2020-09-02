@@ -35,13 +35,13 @@ module MsgSys(
 import Data.List
 
 name :: String -> Name
-name = StringWrapper
+name = wrapString
 
 password :: String -> Password
-password = StringWrapper
+password = wrapString
 
 message :: String -> Message
-message = StringWrapper
+message = wrapString
 
 emptyMsgSys :: MsgSys
 emptyMsgSys = register alerterName alerterPassword (MsgSys [] [])
@@ -121,6 +121,9 @@ type UserPair = Maybe RawUserPair
 alerterName = name "Alerter"
 alerterPassword = password "Extremely secure password"
 
+wrapString :: String -> StringWrapper tag
+wrapString = StringWrapper
+
 unwrapString :: StringWrapper tag -> String
 unwrapString (StringWrapper string) = string
 
@@ -199,29 +202,30 @@ data PasswordTag = PasswordTag deriving(Eq,Show)
 data MessageTag = MessageTag deriving(Eq,Show)
 
 -- =============================================================================
--- The code below allows you to use the "display" function to display the
--- contents of MsgSys with more readable formatting.
+-- The code below allows you to use the "display" function to print readable
+-- representations of instances most types defined in this module.
 -- =============================================================================
 
-data Format = Format {prefix::String, suffix::String}
-data Line = Line Char
-data Blank = Blank
+data Format = Format {prefix::String, suffix::String} deriving(Eq,Show)
+data Line = Line Char deriving(Eq,Show)
+data Blank = Blank deriving(Eq,Show)
 
-newLine :: Format -> Format
-newLine format = format {suffix="\n"}
+newLineFormat :: Format -> Format
+newLineFormat format = format {suffix="\n"}
 
 indent :: Format -> Format
 indent format = format {prefix="  " ++ prefix format}
 
 displayLn :: Displayable a => Format -> a -> IO ()
-displayLn format = formattedDisplay (newLine format)
+displayLn format = formattedDisplay (newLineFormat format)
 
 prefixedDisplay :: Displayable a => Format -> String -> a -> IO ()
 prefixedDisplay format pre =
   formattedDisplay format {prefix=prefix format ++ pre}
 
 prefixedDisplayLn :: Displayable a => Format -> String -> a -> IO ()
-prefixedDisplayLn format = prefixedDisplay (newLine format)
+prefixedDisplayLn format = prefixedDisplay (newLineFormat format)
+
 
 class Displayable a where
   formattedDisplay :: Format -> a -> IO ()
@@ -229,19 +233,19 @@ class Displayable a where
 instance Displayable MsgSys where
   formattedDisplay format msgSys = do
     dispLn doubleLine
-    dispLn "Messages (oldest first):"
+    dispLn (wrapString "Messages (oldest first):")
     dispLn doubleLine
     displayList (indent format) (Line '-') (reverse (allEnvelopes msgSys))
     dispLn doubleLine
-    dispLn "Registered Users:"
+    dispLn (wrapString "Registered Users:")
     dispLn doubleLine
     displayList (indent format) Blank (map credsUser (allCredentials msgSys))
     formattedDisplay format doubleLine
     where
-    doubleLine = Line '='
-
     dispLn :: Displayable a => a -> IO ()
     dispLn = displayLn format
+
+    doubleLine = Line '='
 
 instance Displayable Envelope where
   formattedDisplay format storedMsg = do
@@ -263,42 +267,41 @@ instance Displayable RawUserPair where
 
 instance Displayable LoggedInUser where
   formattedDisplay format Nothing =
-    formattedDisplay format "[Login failed: check Name & Password]"
+    formattedDisplay format (wrapString "[Login failed: check Name & Password]")
 
   formattedDisplay format (Just rawCreds) = formattedDisplay format rawCreds
 
 instance Displayable User where
   formattedDisplay format Nothing =
-    formattedDisplay format "[User not found: check Name]"
+    formattedDisplay format (wrapString "[User not found: check Name]")
 
   formattedDisplay format (Just rawUser) = formattedDisplay format rawUser
 
 instance Displayable UserPair where
   formattedDisplay format Nothing =
     formattedDisplay format
-      "[Undefined UserPair: check Names and LoggedInUser Password]"
+      (wrapString "[Undefined UserPair: check Names and LoggedInUser Password]")
 
   formattedDisplay format (Just rawUserPair) =
     formattedDisplay format rawUserPair
 
 instance Displayable (StringWrapper tag) where
-  formattedDisplay format (StringWrapper string) =
-    formattedDisplay format string
+  formattedDisplay format (StringWrapper string) = do
+    putStr (prefix format)
+    putStr string
+    putStr (suffix format)
 
 instance Displayable Line where
   formattedDisplay format (Line char) =
-    formattedDisplay format (replicate noChars char)
+    formattedDisplay format (wrapString (replicate noChars char))
     where
     noChars = max 0 (80 - length (prefix format))
 
 instance Displayable Blank where
   formattedDisplay _ Blank = return ()
 
-instance Displayable String where
-  formattedDisplay format string = do
-    putStr (prefix format)
-    putStr string
-    putStr (suffix format)
+instance Displayable a => Displayable [a] where
+  formattedDisplay format = displayList format (Line '+')
 
 displayList ::
   (Displayable separator, Displayable a) => Format -> separator -> [a] -> IO ()

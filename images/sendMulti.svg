@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="sendMulti.svg"
-   inkscape:export-filename="/home/ose/Documents/Presentations/Introduction-to-Functional-Programming/sendMulti.png"
+   inkscape:export-filename="/home/ose/Projects/HaskellIntro/images/sendMulti.png"
    inkscape:export-xdpi="300"
    inkscape:export-ydpi="300">
   <defs
@@ -87,9 +87,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0842234"
-     inkscape:cx="423.65616"
-     inkscape:cy="861.54091"
+     inkscape:zoom="1.5333234"
+     inkscape:cx="446.86382"
+     inkscape:cy="806.95069"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -329,7 +329,7 @@
        y="94.5" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-2)"
-       d="m 96.5,84.5 0,38.5"
+       d="m 96.5,84.5 0,34"
        id="path1277-1"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
@@ -491,27 +491,6 @@
          x="143.05774"
          y="103.3747"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">&quot;Thanks for listening&quot;</tspan></text>
-    <rect
-       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect821-4-5-9-7-7"
-       width="20"
-       height="5"
-       x="100"
-       y="109.5" />
-    <rect
-       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect821-0-9-3-3-8-9"
-       width="20"
-       height="5"
-       x="120"
-       y="109.5" />
-    <rect
-       style="opacity:1;fill:#e9edee;fill-opacity:1;stroke:#ffffff;stroke-width:0.244;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect821-6-0-1-8-8-2"
-       width="40"
-       height="5"
-       x="140"
-       y="109.5" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -533,17 +512,6 @@
          id="tspan844-7-6-8-4-59"
          x="107.39936"
          y="103.43701"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Ose</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="107.39936"
-       y="113.43701"
-       id="text846-2-2-5-7-4-2"><tspan
-         sodipodi:role="line"
-         id="tspan844-7-6-8-4-4-2"
-         x="107.39936"
-         y="113.43701"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Ose</tspan></text>
     <text
        xml:space="preserve"
@@ -570,17 +538,6 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="121.96969"
-       y="113.43701"
-       id="text846-2-2-5-7-9-6"><tspan
-         sodipodi:role="line"
-         id="tspan844-7-6-8-4-1-1"
-         x="121.96969"
-         y="113.43701"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">Nathaniel</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="143.16447"
        y="108.16379"
        id="text846-2-5-9-4-2-2"><tspan
@@ -592,45 +549,34 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="143.18921"
-       y="113.18448"
-       id="text846-2-5-9-4-0-3"><tspan
-         sodipodi:role="line"
-         id="tspan844-7-0-3-9-9-1"
-         x="143.18921"
-         y="113.18448"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px">&quot;Thanks for listening&quot;</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="138.93616"
-       y="117.47956"
+       y="112.97956"
        id="text846-2-2-5-7-9-6-4"><tspan
          sodipodi:role="line"
          x="138.93616"
-         y="117.47956"
+         y="112.97956"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888893px;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px"
          id="tspan1193">.</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="138.93616"
-       y="120.97956"
+       y="116.47956"
        id="text846-2-2-5-7-9-6-4-3"><tspan
          sodipodi:role="line"
          x="138.93616"
-         y="120.97956"
+         y="116.47956"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888893px;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px"
          id="tspan1193-6">.</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.30002022px;line-height:125%;font-family:Neuton;-inkscape-font-specification:Neuton;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.06450032px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="138.93616"
-       y="124.47956"
+       y="119.97956"
        id="text846-2-2-5-7-9-6-4-7"><tspan
          sodipodi:role="line"
          x="138.93616"
-         y="124.47956"
+         y="119.97956"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888893px;font-family:Neuton;-inkscape-font-specification:Neuton;fill:#000000;fill-opacity:1;stroke-width:0.06450032px"
          id="tspan1193-5">.</tspan></text>
   </g>

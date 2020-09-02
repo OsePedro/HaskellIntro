@@ -19,7 +19,7 @@ alertee :: User -> UserPair
 alertee = userPair alerter
 
 alert :: Message -> User -> MsgSys -> MsgSys
-alert msg user msgSys = send msg (alertee user) msgSys
+alert msg user = send msg (alertee user)
 
 alertOutOfSpace :: User -> MsgSys -> MsgSys
 alertOutOfSpace = alert (message "You're out of storage space")
@@ -46,8 +46,8 @@ usedSpace msgSys user = sumMessageSizes (userMessages msgSys user)
 -- functions into a single function. E.g. see how it is used in "initialise"
 -- below.
 alertMultiOutOfSpace :: [User] -> MsgSys -> MsgSys
-alertMultiOutOfSpace users msgSys =
-  composeActions (map alertOutOfSpace users) msgSys
+alertMultiOutOfSpace users =
+  composeActions (map alertOutOfSpace users)
 
 
 -- Note: Haskell uses indentation to define scopes, much like Python
