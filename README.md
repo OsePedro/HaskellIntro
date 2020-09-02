@@ -89,6 +89,7 @@ I'll share the solution later.
 ## I'm Hooked! Where Can I learn More About Haskell?
 
 - If there's enough demand, I'll happily do another talk in future about some of the things at the bottom of the [Summary](https://docs.google.com/presentation/d/1bIBQewtYiaXQy0kvyWsJ3YTIPQMGXIq1hXNsOXZcURI/edit#slide=id.g964a3bf043_0_14) slide.
+    - This will help you to understand more of what's going on in [MsgSys.hs](MsgSys.hs).
 - [A Gentle Introduction to Haskell](https://www.haskell.org/tutorial/) &mdash; a short and sweet tutorial.
 - [Learn You a Haskell for Great Good](http://learnyouahaskell.com/) &mdash; I've barely read any of this, but what I've seen so far seems good, and it's free to read online.
 
