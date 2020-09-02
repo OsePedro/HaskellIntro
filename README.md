@@ -4,9 +4,9 @@
 
 This repository contains a basic implementation of the messaging system that I used as a running example in my ["Introduction to Functional Programming" presentation](https://docs.google.com/presentation/d/1bIBQewtYiaXQy0kvyWsJ3YTIPQMGXIq1hXNsOXZcURI).
 
-## Installation
+## Setup
 
-To install the software you need to play around with the messaging system, do the following:
+To set up the software you need to play around with the messaging system, do the following:
 
 1. **Install Haskell:** follow [these instructions](https://www.haskell.org/platform/).
 1. **Download this repository:**
@@ -15,17 +15,23 @@ To install the software you need to play around with the messaging system, do th
         1. Unzip the file somewhere.
     1. Option 2: **Clone the Git repository:**
         1. If you don't already have Git, use [these instructions](https://git-scm.com/downloads) to get it.
-        1. Launch a terminal and run `git clone git@github.com:OsePedro/HaskellIntro.git` to clone this repository.
+        1. Launch a terminal and run
+
+                git clone git@github.com:OsePedro/HaskellIntro.git
+
 1. **Text editor:** You'll need a text editor to edit the code.
-If you want syntax highlighting, try:
+If you want syntax highlighting, try one of the following:
     - [Visual Studio Code](https://code.visualstudio.com/) with the [Haskell](https://marketplace.visualstudio.com/items?itemName=haskell.haskell) extension;
-    - or [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
+    - [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
 
 ## Things to Try
 
 1. Launch a terminal and navigate to the `HaskellIntro` directory that you downloaded/cloned.
 1. Run `ghci`.
-This is a REPL (an interactive environment), in which you can execute arbitrary Haskell expressions.
+This is a REPL &mdash; an interactive environment in which you can execute arbitrary Haskell expressions.
+It allows us to play around with the messaging system without having to write a user interface.
+    - Note that it also gives you direct access to parts of the system that it would be unwise to allow users to directly manipulate.
+    E.g. it allows you to put `MsgSys` into invalid states that cannot otherwise be reached through the functions exported by [MsgSys.hs](MsgSys.hs).
 1. Type `:l Demo` to load the code.
     - The loaded `Demo` module defines:
         - Two instances of `MsgSys` called `msgSys0` and `msgSys1`;
@@ -39,8 +45,11 @@ This is a REPL (an interactive environment), in which you can execute arbitrary 
                 LoggedIn (UserPassword {upUser = User (Name "Ose"), upPassword = Password "Ose's unguessable password"})
 
         1. Use the `display` function to print a more readable representation of the value.
-        This is especially useful for `MsgSys`, as their Haskell expressions are very long.
+        This is especially useful for `MsgSys`, as their Haskell expressions are long and poorly formatted.
         Try executing `display msgSys1` and compare it to what you get when you type `msgSys1` to see what I mean.
+        You can use `display` to view instances of the following types:
+            - `MsgSys`
+            - `LoggedInUser`
 1. Type `msgSys1` in `ghci` to view a `MsgSys` that contains a few messages and `User`s.
 1. There are
 Type `ose`, `pedro`, etc. to see the `Name`s of these `LoggedInUser`s.
