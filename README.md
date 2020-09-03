@@ -15,6 +15,7 @@ If you want to save your changes, you should probably sign up for a free account
 
 If you'd rather play with a local copy of the code, you'll need to do the following:
 1. **Install Haskell:** follow [these instructions](https://www.haskell.org/platform/).
+   I don't think you need to follow the step about installing Stack.
     - I've only done this in Ubuntu, where it's as simple as launching a terminal and running
 
           sudo apt-get update
