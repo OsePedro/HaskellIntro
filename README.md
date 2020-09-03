@@ -6,7 +6,7 @@ This repository contains a basic implementation of the messaging system that I u
 
 ## Setup
 
-### Option 1: Run it Online
+### Option 1 (easiest): Run it Online
 
 The easiest way to start playing around with the messaging system is to use [this repl.it installation](https://repl.it/@OsePedro/HaskellIntro).
 If you want to save your changes, you should probably sign up for a free account (I don't know how long they'll keep your changes for if you don't).
