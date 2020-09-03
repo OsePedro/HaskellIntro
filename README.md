@@ -45,15 +45,16 @@ If you want syntax highlighting, try one of the following:
 1. Load the `Demo` module in `ghci`:
     - If you are running it online, press "Run".
       This will launch `ghci` and load the `Demo` module.
-    - If you are running it locally, launch a terminal, navigate to the `HaskellIntro` directory that you downloaded/cloned, and run `ghci`.
+    - If you are running it locally, launch a terminal, navigate to the `HaskellIntro` directory that you downloaded/cloned, and run `ghci` .
       Type `:l Demo` to load `Demo`.
+        - To quit `ghci`, type `:q` .
     - `ghci` is a REPL &mdash; an interactive environment in which you can execute arbitrary Haskell expressions.
       It allows us to play around with the messaging system without having to write a user interface.
         - Note that it also gives you direct access to parts of the system that it would be unwise to allow users to directly manipulate.
           E.g. it allows you to put `MsgSys` into invalid states that would not otherwise be reachable through the functions exported by the [MsgSys](MsgSys.hs) module.
     - The loaded `Demo` module gives you access to:
-        - Two instances of the type `MsgSys` &mdash; `msgSys0` and `msgSys1`;
-        - Three `LoggedInUser`s &mdash; `alerter`, `ose` and `pedro`;
+        - Two instances of the type `MsgSys` &mdash; `msgSys0` and `msgSys1` ;
+        - Three `LoggedInUser`s &mdash; `alerter`, `ose` and `pedro` ;
         - All of the functions and types described in the presentation.
 1. Type `:t <value/function name>` to view the type of any value or function.
 E.g. typing `:t ose` prints:
@@ -87,7 +88,7 @@ The list of names in parentheses after that are the values, functions and types 
     - These types are returned by the exported functions.
     - `display` can print instances of all of these exported types, and lists of these types.
 1. Open [Demo.hs](Demo.hs) in a text editor.
-1. Add code that `register`s two new `User`s to `msgSys1`.
+1. Add code that `register`s two new `User`s to `msgSys1` .
     - The `initialise` function at the bottom of the file demonstrates how to do this.
     - You can either:
       - modify `initialise`, and the call to `initialise` at the top of the file;
@@ -102,7 +103,7 @@ The list of names in parentheses after that are the values, functions and types 
     1. Use the `send` function to send a `Message` from your new `LoggedInUser` to your new `User`, and name the resulting `MsgSys`.
         - Note: if you want to `send` a `Message` _to_ a `LoggedInUser`, you have to use the `asUser` function to extract the `User` that it contains.
 1. Reload [Demo.hs](Demo.hs) in `ghci` and `display` the new `MsgSys` that you have created.
-1. Try out some of the functions that we wrote in the presentation, e.g.: `alertOutOfSpace`, `usedSpace` and `alertMultiOutOfSpace`.
+1. Try out some of the functions that we wrote in the presentation, e.g.: `alertOutOfSpace`, `usedSpace` and `alertMultiOutOfSpace` .
 1. Have a go at writing the `sendMulti` function suggested on the [final slide](https://docs.google.com/presentation/d/1bIBQewtYiaXQy0kvyWsJ3YTIPQMGXIq1hXNsOXZcURI/edit#slide=id.g9342e8f7da_2_30).
 I'll share the solution later.
 
