@@ -6,12 +6,28 @@ This repository contains a basic implementation of the messaging system that I u
 
 ## Setup
 
-To set up the software you need to play around with the messaging system, do the following:
+### Option 1: Run it Online
 
+The easiest way to start playing around with the messaging system is to use [this repl.it installation](https://repl.it/@OsePedro/HaskellIntro).
+If you want to save your changes, you should probably sign up for a free account (I don't know how long they'll keep your changes for if you don't).
+
+### Option 2: Run it Locally
+
+If you'd rather play with a local copy of the code, you'll need to do the following:
 1. **Install Haskell:** follow [these instructions](https://www.haskell.org/platform/).
+    - I've only done this in Ubuntu, where it's as simple as launching a terminal and running
+
+          sudo apt-get update
+          sudo apt-get install haskell-platform
+
+    - The Mac OS X installation procedure looks straightforward too.
+      I don't have a Mac though, so I can't confirm this.
+    - The Windows installation procedure looks horrible - I don't know why it's like this.
+      If you want to give it a try, [this video](https://www.youtube.com/watch?v=gLr2u6CjSsM) might help.
+        - It might be easier to install Ubuntu 20.04 (e.g. in [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or in a VM), and then install the `haskell-platform` package as described above.
 1. **Download this repository:**
-    1. Option 1 (easiest): **download the zip file** [from here](https://github.com/OsePedro/HaskellIntro/archive/master.zip) and extract its contents.
-    1. Option 2: **clone the Git repository:**
+    1. Option A (easiest): **download the zip file** [from here](https://github.com/OsePedro/HaskellIntro/archive/master.zip) and extract its contents.
+    1. Option B: **clone the Git repository:**
         1. If you don't already have Git, use [these instructions](https://git-scm.com/downloads) to get it.
         1. Launch a terminal and run
 
@@ -21,18 +37,21 @@ To set up the software you need to play around with the messaging system, do the
 If you want syntax highlighting, try one of the following:
     - [Visual Studio Code](https://code.visualstudio.com/) with the [Haskell](https://marketplace.visualstudio.com/items?itemName=haskell.haskell) extension;
     - [Atom](https://atom.io/) with the [language-haskell](https://atom.io/packages/language-haskell) package.
+    - If you're a Sublime user, you can try the [SublimeHaskell](https://packagecontrol.io/packages/SublimeHaskell) package.
 
 ## Things to Try
 
-1. Launch a terminal and navigate to the `HaskellIntro` directory that you downloaded/cloned.
-1. Run `ghci`.
-This is a REPL &mdash; an interactive environment in which you can execute arbitrary Haskell expressions.
-It allows us to play around with the messaging system without having to write a user interface.
-    - Note that it also gives you direct access to parts of the system that it would be unwise to allow users to directly manipulate.
-    E.g. it allows you to put `MsgSys` into invalid states that would not otherwise be reachable through the functions exported by the [MsgSys](MsgSys.hs) module.
-1. Type `:l Demo` to load the code.
+1. Load the `Demo` module in `ghci`:
+    - If you are running it online, press "Run".
+      This will launch `ghci` and load the `Demo` module.
+    - If you are running it locally, launch a terminal, navigate to the `HaskellIntro` directory that you downloaded/cloned, and run `ghci`.
+      Type `:l Demo` to load `Demo`.
+    - `ghci` is a REPL &mdash; an interactive environment in which you can execute arbitrary Haskell expressions.
+      It allows us to play around with the messaging system without having to write a user interface.
+        - Note that it also gives you direct access to parts of the system that it would be unwise to allow users to directly manipulate.
+          E.g. it allows you to put `MsgSys` into invalid states that would not otherwise be reachable through the functions exported by the [MsgSys](MsgSys.hs) module.
     - The loaded `Demo` module gives you access to:
-        - Two instances of `MsgSys` &mdash; `msgSys0` and `msgSys1`;
+        - Two instances of the type `MsgSys` &mdash; `msgSys0` and `msgSys1`;
         - Three `LoggedInUser`s &mdash; `alerter`, `ose` and `pedro`;
         - All of the functions and types described in the presentation.
 1. Type `:t <value/function name>` to view the type of any value or function.
