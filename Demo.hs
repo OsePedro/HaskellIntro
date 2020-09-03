@@ -32,8 +32,9 @@ multiMessageSizes = map messageSize
 sumMessageSizes :: [Message] -> Int
 sumMessageSizes = sum . multiMessageSizes
 
-usedSpace :: MsgSys -> User -> Int
-usedSpace msgSys user = sumMessageSizes (userMessages msgSys user)
+usedSpace :: MsgSys -> LoggedInUser -> Int
+usedSpace msgSys loggedInUser =
+  sumMessageSizes (userMessages msgSys loggedInUser)
 
 -- Note: composeActions is defined in MsgSys.hs as:
 --

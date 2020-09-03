@@ -79,9 +79,9 @@ send _ Nothing msgSys = msgSys
 send msg (Just rawPair) msgSys =
   msgSys {allEnvelopes = Envelope rawPair msg : allEnvelopes msgSys}
 
-userMessages :: MsgSys -> User -> [Message]
-userMessages msgSys user = map envMessage envelopes
-  where envelopes = filter (involvesUser user) (allEnvelopes msgSys)
+userMessages :: MsgSys -> LoggedInUser -> [Message]
+userMessages msgSys liUser = map envMessage envelopes
+  where envelopes = filter (involvesUser liUser) (allEnvelopes msgSys)
 
 messageSize :: Message -> Int
 messageSize = length . unwrapString
@@ -128,15 +128,15 @@ unwrapString (StringWrapper string) = string
 rawCredentials :: Name -> Password -> RawCredentials
 rawCredentials name password = RawCredentials (RawUser name) password
 
-sameUser :: User -> RawCredentials -> Bool
-sameUser user rawCreds = user == Just (credsUser rawCreds)
+sameUser :: LoggedInUser -> RawCredentials -> Bool
+sameUser liUser rawCreds = liUser == Just rawCreds
 
 allRawUsers :: MsgSys -> [RawUser]
 allRawUsers msgSys = map credsUser (allCredentials msgSys)
 
-involvesUser :: User -> Envelope -> Bool
-involvesUser user storedMsg =
-  sameUser user (fst rawPair) || user == Just (snd rawPair)
+involvesUser :: LoggedInUser -> Envelope -> Bool
+involvesUser liUser storedMsg =
+  sameUser liUser (fst rawPair) || asUser liUser == Just (snd rawPair)
   where rawPair = envRawUserPair storedMsg
 
 -- This function returns true if "msgSys" has RawCredentials that satisfy
@@ -155,8 +155,7 @@ validateRegistration msgSys rawCreds =
 canRegister :: MsgSys -> RawCredentials -> Bool
 canRegister msgSys rawCreds = not registered
   where
-  user = Just (credsUser rawCreds)
-  registered = anyCredentialsSatisfy msgSys (sameUser user)
+  registered = anyCredentialsSatisfy msgSys (sameUser (Just rawCreds))
 
 validateLogin :: MsgSys -> RawCredentials -> LoggedInUser
 validateLogin msgSys rawCreds =
